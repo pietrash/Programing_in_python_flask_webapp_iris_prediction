@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Points</title>
+</head>
+<body>
+<h1>Home</h1>
+<table>
+    <tr>
+        <th>#</th>
+        <th>Primary key</th>
+        <th>Sepal length</th>
+        <th>Sepal width</th>
+        <th>Petal length</th>
+        <th>Petal width</th>
+        <th>Species</th>
+        <th>Action</th>
+    </tr>
+    {% for data_point in data_points %}
+    <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ data_point.id }}</td>
+        <td>{{ data_point.sepal_length }}</td>
+        <td>{{ data_point.sepal_width }}</td>
+        <td>{{ data_point.petal_length }}</td>
+        <td>{{ data_point.petal_width }}</td>
+        <td>{{ data_point.species }}</td>
+        <td>
+            <form action="/delete/{{ data_point.id }}" method="post">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<p><a href="/add">Add Data Point</a></p>
+<p><a href="/predict">Predict Category</a></p>
+</body>
+</html>
